@@ -18,25 +18,25 @@ pip install -r requirements.txt
 ## Training method (for supernet)
 Train a supernet first, and then perform search based on the trained supernet. The training method of supernet follows SPOS [[paper](https://arxiv.org/pdf/1904.00420.pdf)].
 ```
-CUDA_VISIBLE_DEVICES=0,1 horovodrun -np 2 -H localhost:2 python3 ctnas/train_spos_supernet.py
+CUDA_VISIBLE_DEVICES=0,1 horovodrun -np 2 -H localhost:2 python3 adaxpert/train_spos_supernet.py
 ```
 If only a single GPU is available:
 ```
-CUDA_VISIBLE_DEVICES=0 horovodrun -np 1 -H localhost:1 python3 ctnas/train_spos_supernet.py
+CUDA_VISIBLE_DEVICES=0 horovodrun -np 1 -H localhost:1 python3 adaxpert/train_spos_supernet.py
 ```
 
 ## Training method (for search)
 
 Train in the Mobile block search space,
 ```
-python3 ctnas/train_mb_spos.py --dataset_class_num 100 --dataset_ratio 1.0 --supernet_path "/path/to/trained-supernet"
+python3 adaxpert/train_mb_spos.py --dataset_class_num 100 --dataset_ratio 1.0 --supernet_path "/path/to/trained-supernet"
 ```
 
 ## Evaluation method
 Evaluate the adaxpert models.
 Well-trained adaxpert models are available in folders "/models".
 ```
-python3 ctnas/eval_mb_specnet.py --eval_model "adaxpert-100" --pretrained_submodel_path "/path/to/pre-trained model"
+python3 adaxpert/eval_mb_specnet.py --eval_model "adaxpert-100" --pretrained_submodel_path "/path/to/pre-trained model"
 ```
 
 ## Results on two data growing scenarios
