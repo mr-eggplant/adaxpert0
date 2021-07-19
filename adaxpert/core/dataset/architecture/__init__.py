@@ -1,0 +1,1 @@
+from .mobilespace import MBArchitecture
